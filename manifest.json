@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Night Mode — Dark Reader for Any Tab",
+  "version": "1.0.0",
+  "description": "Turn any tab into a comfortable dark mode: smart invert or dim overlay, with brightness and color temperature controls.",
+  "permissions": ["storage", "activeTab", "tabs"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "commands": {
+    "toggle-nightmode": {
+      "suggested_key":  {
+        "mac": "Alt+Shift+D",
+        "windows": "Alt+Shift+D",
+        "linux": "Alt+Shift+D"
+      },
+      "description": "Toggle night mode on the current tab"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}
